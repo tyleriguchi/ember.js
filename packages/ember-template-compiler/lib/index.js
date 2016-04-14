@@ -1,4 +1,5 @@
 import _Ember from 'ember-metal';
+import isEnabled from 'ember-metal/features';
 import precompile from 'ember-template-compiler/system/precompile';
 import compile from 'ember-template-compiler/system/compile';
 import template from 'ember-template-compiler/system/template';
@@ -23,19 +24,21 @@ import AssertNoEachIn from 'ember-template-compiler/plugins/assert-no-each-in';
 // used for adding Ember.Handlebars.compile for backwards compat
 import 'ember-template-compiler/compat';
 
-registerPlugin('ast', TransformOldBindingSyntax);
-registerPlugin('ast', TransformOldClassBindingSyntax);
-registerPlugin('ast', TransformItemClass);
-registerPlugin('ast', TransformClosureComponentAttrsIntoMut);
-registerPlugin('ast', TransformComponentAttrsIntoMut);
-registerPlugin('ast', TransformComponentCurlyToReadonly);
-registerPlugin('ast', TransformAngleBracketComponents);
-registerPlugin('ast', TransformInputOnToOnEvent);
-registerPlugin('ast', TransformTopLevelComponents);
-registerPlugin('ast', DeprecateRenderModel);
-registerPlugin('ast', PreventRenderBlock);
-registerPlugin('ast', AssertNoEachIn);
-registerPlugin('ast', TransformInlineLinkTo);
+if (!isEnabled('ember-glimmer')) {
+  registerPlugin('ast', TransformOldBindingSyntax);
+  registerPlugin('ast', TransformOldClassBindingSyntax);
+  registerPlugin('ast', TransformItemClass);
+  registerPlugin('ast', TransformClosureComponentAttrsIntoMut);
+  registerPlugin('ast', TransformComponentAttrsIntoMut);
+  registerPlugin('ast', TransformComponentCurlyToReadonly);
+  registerPlugin('ast', TransformAngleBracketComponents);
+  registerPlugin('ast', TransformInputOnToOnEvent);
+  registerPlugin('ast', TransformTopLevelComponents);
+  registerPlugin('ast', DeprecateRenderModel);
+  registerPlugin('ast', PreventRenderBlock);
+  registerPlugin('ast', AssertNoEachIn);
+  registerPlugin('ast', TransformInlineLinkTo);
+}
 
 if (!_Ember.ENV._ENABLE_LEGACY_VIEW_SUPPORT) {
   registerPlugin('ast', AssertNoViewAndControllerPaths);
