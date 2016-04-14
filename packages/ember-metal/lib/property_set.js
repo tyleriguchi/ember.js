@@ -54,7 +54,6 @@ export function set(obj, keyName, value, tolerant) {
     meta = peekMeta(obj);
     possibleDesc = obj[keyName];
     desc = (possibleDesc !== null && typeof possibleDesc === 'object' && possibleDesc.isDescriptor) ? possibleDesc : undefined;
-    markObjectAsDirty(meta);
   }
 
   var isUnknown, currentValue;
@@ -64,6 +63,10 @@ export function set(obj, keyName, value, tolerant) {
 
   assert(`calling set on destroyed object: ${toString(obj)}.${keyName} = ${toString(value)}`,
          !obj.isDestroyed);
+
+  if (meta) {
+    markObjectAsDirty(meta);
+  }
 
   if (desc) {
     desc.set(obj, keyName, value);
