@@ -1,17 +1,9 @@
 import { assert } from 'ember-metal/debug';
 import EmberObject from 'ember-runtime/system/object';
-import EmberComponent from 'ember-views/components/component';
-import { CONTAINS_DASH_CACHE } from 'ember-htmlbars/system/lookup-helper';
 import { getOwner } from 'container/owner';
+import require from 'require';
 
 export default EmberObject.extend({
-  invalidName(name) {
-    if (!CONTAINS_DASH_CACHE.get(name)) {
-      assert(`You cannot use '${name}' as a component name. Component names must contain a hyphen.`);
-      return true;
-    }
-  },
-
   lookupFactory(name, owner) {
     owner = owner || getOwner(this);
 
@@ -29,7 +21,8 @@ export default EmberObject.extend({
     // or a template has been registered.
     if (templateRegistered || Component) {
       if (!Component) {
-        owner.register(fullName, EmberComponent);
+        // TODO: need a declaritave way to setup an alias to another factory
+        owner.register(fullName, require('ember-templating/component'));
         Component = owner._lookupFactory(fullName);
       }
       return Component;
@@ -37,9 +30,7 @@ export default EmberObject.extend({
   },
 
   componentFor(name, owner, options) {
-    if (this.invalidName(name)) {
-      return;
-    }
+    assert(`You cannot use '${name}' as a component name. Component names must contain a hyphen.`, ~name.indexOf('-'));
 
     var fullName = 'component:' + name;
     return owner._lookupFactory(fullName, options);
