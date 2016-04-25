@@ -4,10 +4,10 @@ import run from 'ember-metal/run_loop';
 import { compile } from 'ember-template-compiler';
 import Application from 'ember-application/system/application';
 import EmberView from 'ember-views/views/view';
-import Component from 'ember-views/components/component';
+import Component from 'ember-templates/component';
 import jQuery from 'ember-views/system/jquery';
 import isEnabled from 'ember-metal/features';
-import { setTemplates, set as setTemplate } from 'ember-htmlbars/template_registry';
+import { setTemplates, set as setTemplate } from 'ember-templates/template_registry';
 
 /*
  In Ember 1.x, controllers subtly affect things like template scope

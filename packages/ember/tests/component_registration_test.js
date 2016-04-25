@@ -6,11 +6,11 @@ import Router from 'ember-routing/system/router';
 import compile from 'ember-template-compiler/system/compile';
 import helpers from 'ember-htmlbars/helpers';
 import { OutletView } from 'ember-routing-views/views/outlet';
-import Component from 'ember-views/components/component';
+import Component from 'ember-templates/component';
 import jQuery from 'ember-views/system/jquery';
 import { A as emberA } from 'ember-runtime/system/native_array';
 import isEnabled from 'ember-metal/features';
-import { setTemplates, set as setTemplate } from 'ember-htmlbars/template_registry';
+import { setTemplates, set as setTemplate } from 'ember-templates/template_registry';
 
 var App, appInstance;
 var originalHelpers;

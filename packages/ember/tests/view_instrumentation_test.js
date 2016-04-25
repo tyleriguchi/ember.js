@@ -3,7 +3,7 @@ import $ from 'ember-views/system/jquery';
 import Application from 'ember-application/system/application';
 import { subscribe, unsubscribe } from 'ember-metal/instrumentation';
 import { compile } from 'ember-template-compiler';
-import { setTemplates, set as setTemplate } from 'ember-htmlbars/template_registry';
+import { setTemplates, set as setTemplate } from 'ember-templates/template_registry';
 
 var App, $fixture;
 

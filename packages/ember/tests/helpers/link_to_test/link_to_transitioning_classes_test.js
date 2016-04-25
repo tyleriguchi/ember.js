@@ -7,7 +7,7 @@ import Application from 'ember-application/system/application';
 import jQuery from 'ember-views/system/jquery';
 import NoneLocation from 'ember-routing/location/none_location';
 import isEnabled from 'ember-metal/features';
-import { setTemplates, set as setTemplate } from 'ember-htmlbars/template_registry';
+import { setTemplates, set as setTemplate } from 'ember-templates/template_registry';
 
 var Router, App, router, registry, container;
 

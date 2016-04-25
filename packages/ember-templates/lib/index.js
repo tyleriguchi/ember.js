@@ -3,7 +3,7 @@ import require from 'require';
 import {
   getTemplates,
   setTemplates
-} from 'ember-templates/template-registry';
+} from 'ember-templates/template_registry';
 import 'bootstrap';
 
 let Component;
