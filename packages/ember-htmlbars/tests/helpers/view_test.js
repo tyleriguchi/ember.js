@@ -6,7 +6,7 @@ import EmberComponent from 'ember-views/components/component';
 import ComponentLookup from 'ember-views/component_lookup';
 import run from 'ember-metal/run_loop';
 import jQuery from 'ember-views/system/jquery';
-import TextField from 'ember-views/views/text_field';
+import TextField from 'ember-templates/components/text_field';
 import EmberObject from 'ember-runtime/system/object';
 import SafeString from 'htmlbars-util/safe-string';
 import precompile from 'ember-template-compiler/compat/precompile';
